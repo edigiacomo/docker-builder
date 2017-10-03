@@ -1,6 +1,8 @@
 DOCKERFILES = fedora/Dockerfile-25 fedora/Dockerfile-26 centos/Dockerfile-7
 BUILDFILES = fedora/Dockerfile-25.build fedora/Dockerfile-26.build centos/Dockerfile-7.build
 
+all: dockerbuild
+
 dockerfiles: $(DOCKERFILES)
 
 dockerbuild: $(BUILDFILES)
