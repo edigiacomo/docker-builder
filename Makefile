@@ -8,15 +8,15 @@ dockerfiles: $(DOCKERFILES)
 dockerbuild: $(BUILDFILES)
 
 fedora/Dockerfile-25.build: fedora/Dockerfile-25 fedora/build.sh
-	docker build -t docker-builder/fedora:25 -f $< fedora/
+	docker build -t edigiacomo/docker-builder:fedora-25 -f $< fedora/
 	touch $@
 
 fedora/Dockerfile-26.build: fedora/Dockerfile-26 fedora/build.sh
-	docker build -t docker-builder/fedora:26 -f $< fedora/
+	docker build -t edigiacomo/docker-builder:fedora-26 -f $< fedora/
 	touch $@
 
 centos/Dockerfile-7.build: centos/Dockerfile-7 centos/build.sh
-	docker build -t docker-builder/centos:7 -f $< centos/
+	docker build -t edigiacomo/docker-builder:centos-7 -f $< centos/
 	touch $@
 
 fedora/Dockerfile-25: fedora/Dockerfile.tmpl
