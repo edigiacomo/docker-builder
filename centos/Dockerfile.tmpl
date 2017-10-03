@@ -1,0 +1,13 @@
+FROM centos:@DISTVERSION@
+LABEL maintainer="emanuele@digiacomo.cc"
+RUN sed -i '/^tsflags=/d' /etc/yum.conf
+RUN mkdir /buildscript
+RUN yum install -y epel-release
+RUN yum install -y @buildsys-build
+RUN yum install -y yum-utils
+RUN yum install -y yum-plugin-copr
+RUN yum install -y git
+RUN yum copr enable -y pat1/simc
+ADD build.sh /buildscript/
+RUN chmod +x /buildscript/build.sh
+CMD ["/buildscript/build.sh"]

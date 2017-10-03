@@ -1,0 +1,11 @@
+FROM fedora:@DISTVERSION@
+LABEL maintainer="emanuele@digiacomo.cc"
+RUN sed -i '/^tsflags=/d' /etc/dnf/dnf.conf
+RUN mkdir /buildscript
+RUN dnf install -y @buildsys-build
+RUN dnf install -y 'dnf-command(builddep)'
+RUN dnf install -y git
+RUN dnf copr enable -y pat1/simc
+ADD build.sh /buildscript/
+RUN chmod +x /buildscript/build.sh
+CMD ["/buildscript/build.sh"]
